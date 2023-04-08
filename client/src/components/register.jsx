@@ -21,11 +21,6 @@ export default function SignUp() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		const data = new FormData(event.currentTarget);
-		setEmail(data.get("email"));
-		setPassword(data.get("password"));
-		setGivenName(data.get("firstName"));
-		setfamilyName(data.get("lastName"));
 		var attributeList = [];
 		var dataEmail = {
 			Name: "email",
@@ -89,6 +84,8 @@ export default function SignUp() {
 									id="firstName"
 									label="First Name"
 									autoFocus
+									value={givenName}
+                                    onChange={(e) => setGivenName(e.target.value)}
 								/>
 							</Grid>
 							<Grid item xs={12} sm={6}>
@@ -99,6 +96,8 @@ export default function SignUp() {
 									label="Last Name"
 									name="lastName"
 									autoComplete="family-name"
+									value={familyName}
+                                    onChange={(e) => setfamilyName(e.target.value)}
 								/>
 							</Grid>
 							<Grid item xs={12}>
@@ -109,6 +108,7 @@ export default function SignUp() {
 									label="Email Address"
 									name="email"
 									autoComplete="email"
+									onChange={(e) => setEmail(e.target.value)}
 								/>
 							</Grid>
 							<Grid item xs={12}>
@@ -120,6 +120,8 @@ export default function SignUp() {
 									type="password"
 									id="password"
 									autoComplete="new-password"
+									value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
 								/>
 							</Grid>
 						</Grid>
@@ -133,7 +135,7 @@ export default function SignUp() {
 						</Button>
 						<Grid container justifyContent="flex-end">
 							<Grid item>
-								<Link href="#" variant="body2">
+								<Link href="/login" variant="body2">
 									Already have an account? Sign in
 								</Link>
 							</Grid>
